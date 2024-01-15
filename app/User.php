@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function real_state()
+    {
+        return $this->hasMany(RealState::class);///um user pode ter varios realstate models
+    }
 }

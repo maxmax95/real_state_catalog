@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\RealStateController;
 use Illuminate\Http\Request;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::prefix('v1')->namespace('api')->group(function(){ ///declarado que controllers usados aqui estarao no Api/
+
+    Route::prefix('/real-states')->name('real_states.')->group(function(){
+
+        Route::get('/', 'RealStateController@index')->name('index'); // api/v1/real-states
+    });
 });
